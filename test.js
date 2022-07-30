@@ -1,5 +1,4 @@
-const lyertiautils = require("lyertiautils");
-const utils = new lyertiautils({ authKey: "SUPER-SECRET-AUTH-KEY", client: client });
+const lyertiautils = require("@lyertia/lyertiautils"); //if you installed it on npm
 const discord = require("discord.js");
 const { Intents } = require("discord.js");
 const client = new discord.Client({
@@ -12,9 +11,15 @@ const client = new discord.Client({
     ],
   ],
 });
+const utils = new lyertiautils({
+  authKey: "SUPER_SECRET_KEY",
+  client: client,
+});
 
-client.on("ready", () => {
-utils.post();
-}).login(
-  "SUPER-SECRET-DISCORD-TOKEN"
-);
+client
+  .on("ready", () => {
+    utils.post();
+  })
+  .login(
+    "SUPER-SECRET-DISCORD-TOKEN"
+  );
